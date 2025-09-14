@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core System Colors */
+    --color-background: #0F172A; /* slate-900 */
+    --color-foreground: #F8FAFC; /* slate-50 */
+    --color-border: #475569; /* slate-600 */
+    --color-input: #1E293B; /* slate-800 */
+    --color-ring: #DC2626; /* red-600 */
+    
+    /* Card & Surface Colors */
+    --color-card: #1E293B; /* slate-800 */
+    --color-card-foreground: #F8FAFC; /* slate-50 */
+    --color-popover: #1E293B; /* slate-800 */
+    --color-popover-foreground: #F8FAFC; /* slate-50 */
+    
+    /* Muted Colors */
+    --color-muted: #334155; /* slate-700 */
+    --color-muted-foreground: #94A3B8; /* slate-400 */
+    
+    /* Primary Colors - Critical Alert Red */
+    --color-primary: #DC2626; /* red-600 */
+    --color-primary-foreground: #FFFFFF; /* white */
+    
+    /* Secondary Colors - Emergency Service Blue */
+    --color-secondary: #1E40AF; /* blue-700 */
+    --color-secondary-foreground: #FFFFFF; /* white */
+    
+    /* Destructive Colors - Deep Emergency Red */
+    --color-destructive: #B91C1C; /* red-700 */
+    --color-destructive-foreground: #FFFFFF; /* white */
+    
+    /* Accent Colors - Amber Warning */
+    --color-accent: #F59E0B; /* amber-500 */
+    --color-accent-foreground: #000000; /* black */
+    
+    /* Success Colors - Emergency Green */
+    --color-success: #059669; /* emerald-600 */
+    --color-success-foreground: #FFFFFF; /* white */
+    
+    /* Warning Colors - Intensified Amber */
+    --color-warning: #D97706; /* amber-600 */
+    --color-warning-foreground: #FFFFFF; /* white */
+    
+    /* Error Colors - System Error Red */
+    --color-error: #B91C1C; /* red-700 */
+    --color-error-foreground: #FFFFFF; /* white */
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  /* Emergency Status Pulse Animation */
+  @keyframes emergency-pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  .animate-emergency-pulse {
+    animation: emergency-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  /* Stress-Responsive Animation Classes */
+  .motion-safe:animate-smooth {
+    transition: all 200ms ease-out;
+  }
+  
+  .motion-reduce:animate-smooth {
+    transition: none;
+  }
+  
+  /* Emergency Color Utilities */
+  .text-critical {
+    color: var(--color-primary);
+  }
+  
+  .text-warning-amber {
+    color: var(--color-accent);
+  }
+  
+  .text-safe {
+    color: var(--color-success);
+  }
+  
+  .bg-critical {
+    background-color: var(--color-primary);
+  }
+  
+  .bg-warning-amber {
+    background-color: var(--color-accent);
+  }
+  
+  .bg-safe {
+    background-color: var(--color-success);
+  }
+  
+  /* High Contrast Text for Emergency Readability */
+  .text-emergency-high {
+    color: var(--color-foreground);
+    font-weight: 600;
+  }
+  
+  .text-emergency-medium {
+    color: var(--color-muted-foreground);
+    font-weight: 500;
+  }
+}
